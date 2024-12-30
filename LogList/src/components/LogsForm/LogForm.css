@@ -4,7 +4,8 @@
   background-color: #efd4a2;
   border-radius: 10px;
   padding: 10px;
-
+  position: relative;
+  z-index: 1;
 }
 .form_item
 {
