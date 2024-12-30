@@ -1,0 +1,56 @@
+.confirmModel
+{
+    width:400px;
+    height: 230px;
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.confirmText
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: 0 auto ;
+}
+.confirm
+{
+    width: 70px;
+    height: 30px;
+    border-radius: 5px;  
+    background-color: rgb(68, 188, 236);
+    border: 0;
+    color: white;
+    margin-right: 20px;
+}
+.cancle
+{
+    width: 70px;
+    height: 30px;
+    border-radius: 5px;  
+    background-color: white;
+    border: 1px solid rgb(68, 188, 236);
+    color: #272626;
+    /* margin-right: 10px; */
+}
+.confirmButton
+{
+    display: flex;
+    justify-content: flex-end;
+}
+.title
+{
+    font-size: 23px;
+    font-weight: 700;
+    height: 30px;
+}

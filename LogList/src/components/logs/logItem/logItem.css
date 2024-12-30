@@ -1,0 +1,21 @@
+.item
+{   height: 80px;
+    display: flex;
+    background-color: #ecb244;
+    border-radius: 10px;
+    padding: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin: 20px;
+}
+.delete
+{
+    color: #000;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.delete:hover
+{
+    color: red;
+
+}
