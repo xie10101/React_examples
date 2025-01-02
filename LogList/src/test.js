@@ -38,14 +38,16 @@ function Test() {
   };
 
   //定义一个删除函数：--以id作为删除标准?//以index作为删除标准
-  const deleteLogHandler = (index) => {
-    console.log(index);
+  const deleteLogHandler = (id) => {
+    // setLogsData((preLogsData) => {
+    //   //splice是破坏型的方法--浅复制一个数组作为操作对象
+    //   let newLogs = [...preLogsData];
+    //   newLogs.splice(index, 1); //返回值是啥？--被删除的对象？
+    //   return newLogs;
+    // });
+    //
     setLogsData((preLogsData) => {
-      //splice是破坏型的方法--浅复制一个数组作为操作对象
-      let newLogs = [...preLogsData];
-      console.log(newLogs);
-      newLogs.splice(index, 1); //返回值是啥？--被删除的对象？
-      return newLogs;
+      return preLogsData.filter((item) => item.id !== id);
     });
   };
 
