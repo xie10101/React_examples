@@ -1,0 +1,42 @@
+ /* 
+ 由于已知了视图宽度--750rem
+ 之后使用rem单位--继承html单位
+ */ 
+
+.Meal
+{
+  box-sizing: border-box;
+    border-bottom: 1px #f2f2f2 solid;
+    font-size: 12rem;
+    display: flex;
+    padding: 6rem;
+    align-items: center;
+    /* 主轴对齐方式** */
+}
+.img
+{  
+    display: block;
+    width: 100rem;
+    height: 100rem;
+
+}
+/* 段落如果设置了宽度-则将作为整体盒子宽度？ */
+.p1{
+width: 270rem;
+word-wrap: break-word;
+letter-spacing: 0.2;
+margin-top: 5rem;
+color: #8b8989;
+}
+.price
+{
+    font-size: 20rem;
+    font-weight: 700;
+}
+.name
+{
+    font-size: 16rem;
+    font-weight: 600;
+    margin: 10rem 0  0  0;
+    padding-bottom:0 ;
+}
