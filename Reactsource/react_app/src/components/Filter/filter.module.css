@@ -1,0 +1,41 @@
+.filter{
+    position: fixed;
+    z-index: 99;
+    height: 40rem;
+    left: 0;
+    right: 0;
+    border: 1rem solid #ccc;
+}
+
+.Meals_input
+{
+    width: 90%;
+    line-height: 30rem; 
+    height: 30rem;
+    background-color: #c3c3c3;
+    border-radius: 15rem;
+    margin-left: 10rem;
+    border:none;
+    outline: none;
+    color: hsl(0, 2%, 33%);
+    font-size: 14rem;
+    
+ 
+}
+.icon_Search{
+    font-size: 18rem;
+    color: hsl(0, 2%, 33%);
+    margin-left: 15rem;
+ }
+.container{
+    background-color: #c3c3c3;
+    width: 87%;
+    border-radius: 15rem;
+    margin-left: 6%;
+    margin-right: 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 30rem;
+    margin-top: 3rem;
+}
