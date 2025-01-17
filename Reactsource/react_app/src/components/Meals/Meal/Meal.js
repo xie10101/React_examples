@@ -14,16 +14,12 @@ const Meal = (props) => {
           src={props.mealData.img}
         ></img>
       </div>
-      <div style={{ margin: "0", padding: "0" }}>
+      <div className={classes.b1}>
         <h2 className={classes.name}>{props.mealData.title}</h2>
-        <p className={classes.p1}>{props.mealData.desc}</p>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
+        {props.noDesc ? null : (
+          <p className={classes.p1}>{props.mealData.desc}</p>
+        )}
+        <div className={classes.c1}>
           <span className={classes.price}>￥{props.mealData.price}</span>
           <Counter
             style={{ float: "right" }}

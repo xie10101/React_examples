@@ -2,7 +2,8 @@
 {
     position: absolute;
     top: 40rem;
-    bottom: 0;
+    bottom: 0rem;
     overflow: auto;
-    /*  */
+    padding-bottom: 100rem;
+    height: 83%;
 }

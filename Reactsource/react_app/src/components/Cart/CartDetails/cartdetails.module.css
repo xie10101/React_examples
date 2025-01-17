@@ -1,0 +1,49 @@
+.CartDetails{
+
+    background-color: #fff;
+    width: 100%;
+    /* height: 200rem; */
+    position: absolute;
+    bottom: 0px;
+    padding-bottom: 80rem;
+    border-top-left-radius: 20rem;
+    border-top-right-radius: 20rem;
+    max-height: 500rem;
+    display: flex;
+    flex-direction: column;
+}
+.header{
+    width: 100%;
+    height: 60rem;
+    padding: 20rem 15rem;
+    border-radius: 20rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.title
+{
+    font-size: 18rem;
+    font-weight: 600;
+    color: #000;
+    margin: 0;
+}
+.clear
+{
+  font-size: 15rem;
+  color: #bebebe;
+   display: flex;
+   align-items: center;
+}
+.icon_trash
+{
+margin-right: 10rem;
+}
+
+.mealList
+{
+  height: 390rem;  
+  overflow: auto;
+  /* 设置滚动 */
+
+}

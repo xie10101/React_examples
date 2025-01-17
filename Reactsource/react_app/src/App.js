@@ -3,36 +3,9 @@ import Meals from "./components/Meals/Meals";
 import { useState } from "react";
 import CartContext from "./store/cart-context";
 import Filter from "./components/Filter/filter";
+import Cart from "./components/Cart/Cart";
 //初始的食物数据使用常量保存：
 const MEALS_Data = [
-  {
-    id: "2",
-    title: "香辣汉堡包",
-    desc: "百分百纯牛肉搭配脆爽黄瓜片洋葱粒与美味番茄酱经典滋味无与伦比",
-    price: 22,
-    img: "./img/2.png",
-  },
-  {
-    id: "2",
-    title: "香辣汉堡包",
-    desc: "百分百纯牛肉搭配脆爽黄瓜片洋葱粒与美味番茄酱经典滋味无与伦比",
-    price: 22,
-    img: "./img/2.png",
-  },
-  {
-    id: "2",
-    title: "香辣汉堡包",
-    desc: "百分百纯牛肉搭配脆爽黄瓜片洋葱粒与美味番茄酱经典滋味无与伦比",
-    price: 22,
-    img: "./img/2.png",
-  },
-  {
-    id: "2",
-    title: "香辣汉堡包",
-    desc: "百分百纯牛肉搭配脆爽黄瓜片洋葱粒与美味番茄酱经典滋味无与伦比",
-    price: 22,
-    img: "./img/2.png",
-  },
   {
     id: "2",
     title: "香辣汉堡包",
@@ -48,7 +21,28 @@ const MEALS_Data = [
     img: "./img/3.png",
   },
   {
+    id: "5",
+    title: "至尊汉堡包",
+    desc: "百分百纯牛肉搭配脆爽黄瓜片洋葱粒与美味番茄酱经典滋味无与伦比",
+    price: 32,
+    img: "./img/3.png",
+  },
+  {
+    id: "6",
+    title: "至尊汉堡包",
+    desc: "百分百纯牛肉搭配脆爽黄瓜片洋葱粒与美味番茄酱经典滋味无与伦比",
+    price: 32,
+    img: "./img/3.png",
+  },
+  {
     id: "4",
+    title: "美味汉堡包",
+    desc: "百分百纯牛肉搭配脆爽黄瓜片洋葱粒与美味番茄酱经典滋味无与伦比",
+    price: 25,
+    img: "./img/4.jpg",
+  },
+  {
+    id: "7",
     title: "美味汉堡包",
     desc: "百分百纯牛肉搭配脆爽黄瓜片洋葱粒与美味番茄酱经典滋味无与伦比",
     price: 25,
@@ -126,11 +120,24 @@ function App() {
     }
   };
 
+  //定义仓库中清除函数：
+  const clearCart = () => {
+    const newCart = { ...cartData };
+    newCart.items.forEach((item) => delete item.amount);
+    newCart.items = [];
+    newCart.totalAmount = 0;
+    newCart.totalPrice = 0;
+    setCartData(newCart);
+  };
+
   return (
     <>
-      <CartContext.Provider value={{ ...cartData, addItem, removeItem }}>
+      <CartContext.Provider
+        value={{ ...cartData, addItem, removeItem, clearCart }}
+      >
         <Filter onSearch={searchMeal}></Filter>
         <Meals mealsData={mealsData}></Meals>
+        <Cart></Cart>
       </CartContext.Provider>
     </>
   );

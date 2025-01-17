@@ -1,0 +1,46 @@
+.backDrop
+{
+    z-index:99999;
+}
+.outdiv
+{
+    width: 350rem;
+    height: 220rem;
+    background-color: #fff;
+    position:absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 20rem; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.text
+{
+    font-size: 20rem;
+}
+.btn_c
+{
+
+    width: 80rem;
+    height: 35rem;
+    background-color:#c4c1c1 ;
+    border: 0;
+    border-radius: 15rem;
+    font-size: 18rem;
+
+}
+.btn_ok{
+    font-size: 18rem;
+    width: 80rem;
+    height: 35rem;
+    border-radius: 15rem;
+    background-color:#fdbf49 ;
+    border: 0;
+    margin-left: 10rem;
+
+}
