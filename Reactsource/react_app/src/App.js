@@ -1,9 +1,10 @@
 import "./App.css";
 import Meals from "./components/Meals/Meals";
-import { useState } from "react";
+import { useReducer, useState } from "react";
 import CartContext from "./store/cart-context";
 import Filter from "./components/Filter/filter";
 import Cart from "./components/Cart/Cart";
+
 //初始的食物数据使用常量保存：
 const MEALS_Data = [
   {
@@ -49,92 +50,84 @@ const MEALS_Data = [
     img: "./img/4.jpg",
   },
 ];
+//设置购物车清单数据：
+/*
+1. 商品数组：
+2. 商品总数
+2. 商品总价
+*/
+// 定义
+const cartReducer = (state, action) => {
+  //进行购物车的浅赋值：
+  const newCart = { ...state };
+  switch (action.type) {
+    case "AddCart":
+      // meal需要从dispatch进行传入
+      if (newCart.items.indexOf(action.meal) === -1) {
+        //向购物车中添加商品：
+        newCart.items.push(action.meal);
+        //添加时数量加1：--此时将
+        action.meal.amount = 1;
+      } else {
+        action.meal.amount += 1;
+        console.log(action.meal.amount);
+      }
+      //增加总数：
+      newCart.totalAmount += 1;
+      //增加总价：
+      newCart.totalPrice += action.meal.price;
+      return newCart;
+    case "RemoveCart":
+      action.meal.amount -= 1;
+      //检查商品数量是否为0 为0 将其在购物车中去除
+      if (action.meal.amount === 0) {
+        //从购物车中移除商品
+        // 使用filter函数：
+        newCart.items = newCart.items.filter((item) => action.meal !== item);
+      }
+      //减少总数：
+      newCart.totalAmount -= 1;
+      newCart.totalPrice -= action.meal.price;
+      return newCart;
+    case "ClearCart":
+      newCart.items.forEach((item) => delete item.amount);
+      newCart.items = [];
+      newCart.totalAmount = 0;
+      newCart.totalPrice = 0;
+      return newCart;
+    default:
+      return state;
+  }
+};
 
 function App() {
   // 响应式-mealdata数据
-  const [mealsData, setMealData] = useState(MEALS_Data);
-
-  //设置购物车清单数据：
-  /*
- 1. 商品数组：
- 2. 商品总数
- 2. 商品总价
- */
-  const [cartData, setCartData] = useState({
+  const [mealsData, setMealsData] = useState(MEALS_Data);
+  const [cartData, cartDispatch] = useReducer(cartReducer, {
     items: [],
     totalAmount: 0,
     totalPrice: 0,
   });
-
-  //购物车添加商品的回调：
-  const addItem = (meal) => {
-    //先将已有数据进行浅复制：
-    const newCart = { ...cartData };
-
-    //向数据中进行添加
-    //1.先看商品是否存在
-    if (newCart.items.indexOf(meal) === -1) {
-      //向购物车中添加商品：
-      newCart.items.push(meal);
-      //添加时数量加1：--此时将
-      meal.amount = 1;
-    } else {
-      meal.amount += 1;
-    }
-    //增加总数：
-    newCart.totalAmount += 1;
-    //增加总价：
-    newCart.totalPrice += meal.price;
-
-    setCartData(newCart);
-  };
-  //减少商品数量：
-  const removeItem = (meal) => {
-    //复制：
-    const newCart = { ...cartData };
-    //减少商品数量：
-    meal.amount -= 1;
-    //检查商品数量是否为0 为0 将其在购物车中去除
-    if (meal.amount === 0) {
-      //从购物车中移除商品
-      // 使用filter函数：
-      newCart.items = newCart.items.filter((item) => meal !== item);
-    }
-    //减少总数：
-    newCart.totalAmount -= 1;
-    newCart.totalPrice -= meal.price;
-    setCartData(newCart);
-  };
   // 函数与属性一样需要使用相同的方法名进行替换
 
   // 搜索框的实现:1.存在输入内容 2.不存在输入内容
 
   const searchMeal = (searchText) => {
     // 搜索框输入的内容：
-    if (searchText.trim().length === 0) {
-      setMealData(MEALS_Data);
+    if (searchText.length === 0) {
+      setMealsData(MEALS_Data);
     } else {
       // 搜索框输入的内容不为空：
-      const newMeals = MEALS_Data.filter((meal) => meal.title === searchText);
-      setMealData(newMeals);
+      const newMeals = MEALS_Data.filter((meal) =>
+        meal.title.includes(searchText)
+      );
+      setMealsData(newMeals);
     }
-  };
-
-  //定义仓库中清除函数：
-  const clearCart = () => {
-    const newCart = { ...cartData };
-    newCart.items.forEach((item) => delete item.amount);
-    newCart.items = [];
-    newCart.totalAmount = 0;
-    newCart.totalPrice = 0;
-    setCartData(newCart);
   };
 
   return (
     <>
-      <CartContext.Provider
-        value={{ ...cartData, addItem, removeItem, clearCart }}
-      >
+      <CartContext.Provider value={{ ...cartData, cartDispatch }}>
         <Filter onSearch={searchMeal}></Filter>
         <Meals mealsData={mealsData}></Meals>
         <Cart></Cart>

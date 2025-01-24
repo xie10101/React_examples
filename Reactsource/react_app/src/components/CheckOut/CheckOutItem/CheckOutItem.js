@@ -1,15 +1,18 @@
 import classes from "./CheckOutItem.module.css";
-const CheckOutItem = () => {
+import Counter from "../../Meals/Counter/Counter";
+const CheckOutItem = (props) => {
   return (
-    <div>
-      <div>
-        <img src="#" alt="hanbaobao1"></img>
+    <div className={classes.checkoutitem}>
+      <div className={classes.img}>
+        <img src={props.meal.img} alt="hanbao"></img>
       </div>
-      <div>
-        <h2>汉堡包</h2>
-        <div>
-          <div>counter</div>
-          <div>￥23</div>
+      <div className={classes.desc}>
+        <h2>{props.meal.title}</h2>
+        <div className={classes.setting}>
+          <Counter mealData={props.meal}></Counter>
+          <div className={classes.price}>
+            {props.meal.price * props.meal.amount}
+          </div>
         </div>
       </div>
     </div>

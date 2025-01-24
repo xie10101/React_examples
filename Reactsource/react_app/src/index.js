@@ -12,8 +12,8 @@ document.documentElement.style.fontSize = 100 / 390 + "vw"; //1vw--代表视口�
 //750rem就是视口的宽度--以其作为初始的屏幕宽度
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  // <React.StrictMode>
+  <App />
+  // </React.StrictMode>
 );
 reportWebVitals();

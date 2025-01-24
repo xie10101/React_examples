@@ -1,0 +1,35 @@
+.Cart
+{
+position: fixed;
+width: 90%;
+height: 45rem;
+background-color: #3a3a3a;
+bottom: 20rem;
+margin-left: 5%;
+margin-right: 5%;
+border-radius: 25rem;
+display: flex ;
+z-index: 999;
+}
+.totalPrice
+{
+    flex: 3;
+    font-size: 20rem;
+    font-weight: 600;
+    color: #fff;
+    margin: 0;
+    margin-left: 20rem;
+    line-height: 56rem;
+    height: 100%;
+}
+.button{
+
+width: 110rem;
+height: 100%;
+background-color: #f9bc00;
+flex: 1.5;
+border: 0;
+border-radius: 25rem;
+font-size: 18rem;
+font-weight: 600;
+}

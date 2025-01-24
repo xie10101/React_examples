@@ -1,6 +1,6 @@
 .checkout
 {
-    font-size: 20rem;
+  font-size: 20rem;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -22,6 +22,7 @@
  border-radius: 23rem;
  padding: 10rem 20rem;
  margin-top: 4%;
+ height: 90%;
 }
 .title
 {
@@ -34,6 +35,9 @@
 .list
 {
   border-bottom: 2px  #c3c1c1 dotted;
+  height: 75%;
+  /* background-color: red; */
+  overflow: auto;
 }
 footer{
   display: flex;

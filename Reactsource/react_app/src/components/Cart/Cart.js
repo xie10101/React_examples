@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import classes from "./Cart.module.css";
 import CartContext from "../../store/cart-context";
 import { useContext, useState } from "react";
@@ -7,6 +7,8 @@ import Checkout from "../CheckOut/Checkout";
 const Cart = () => {
   const ctx = useContext(CartContext);
   const [isListShow, setListShow] = useState(false);
+  //使用 useEffect修改清除列表的自动关闭：
+
   // 存在事件的冒泡--父组件绑定点击事件组件也可以响应
   // 展示购物车商品列表回调
   const showListHandler = () => {
@@ -34,6 +36,15 @@ const Cart = () => {
   const closeCheckOutHandler = () => {
     setShowCheckOut(false);
   };
+  useEffect(() => {
+    if (ctx.totalAmount === 0) {
+      setListShow(false);
+      setShowCheckOut(false);
+    }
+  }, [ctx.totalAmount]);
+  //第二个参数可以设置变化参数，当参数发生变化时该useEffect才执行
+  // 通常会将函数中使用到的所有变量设置为变化参数
+
   return (
     <>
       {isShowCheckOut ? (

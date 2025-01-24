@@ -1,0 +1,40 @@
+.checkoutitem
+{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.img
+{
+ width: 100rem;
+ height: 100rem;
+ margin-right: 10rem;
+}
+.desc{
+    height: 100rem;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+   flex: 1;   
+}
+.desc h2
+{
+  margin: 0;
+  font-size: 20rem;
+
+}
+.setting
+{
+    display: flex;
+    justify-content: space-between;
+  }
+.desc .price
+{
+    font-size: 23rem;
+    font-weight: 600;
+}
+.desc .price::before{
+    content: "￥";
+    font-size: 17rem;
+    font-weight: 500;
+}

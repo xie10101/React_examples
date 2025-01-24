@@ -3,16 +3,16 @@ import CartContext from "../../../store/cart-context";
 import { useContext } from "react";
 
 const Counter = (props) => {
+  const ctx = useContext(CartContext);
   //添加购物车函数
   const addButtonHandler = () => {
-    ctx.addItem(props.mealData);
+    ctx.cartDispatch({ type: "AddCart", meal: props.mealData });
   };
 
   const resButtonHandler = () => {
-    ctx.removeItem(props.mealData);
+    ctx.cartDispatch({ type: "RemoveCart", meal: props.mealData });
   };
 
-  const ctx = useContext(CartContext);
   return (
     <div className={classes.Counter}>
       {

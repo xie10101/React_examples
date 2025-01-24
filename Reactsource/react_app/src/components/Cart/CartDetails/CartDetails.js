@@ -21,7 +21,7 @@ const CartDetails = (props) => {
   };
   const okHandler = () => {
     //特别注意：
-    cartCtx.clearCart();
+   cartCtx.cartDispatch({type:"ClearCart"})
     props.onShow();
   };
 
