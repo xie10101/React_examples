@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redux</title>
+    <script src="https://unpkg.com/redux@4.2.0/dist/redux.js"></script>
+  </head>
+  <body>
+    <button id="btn01">减少</button>
+    <span id="counter">1</span>
+    <button id="btn02">增加</button>
+    <script>
+      const btn01 = document.getElementById("btn01");
+      const btn02 = document.getElementById("btn02");
+      const counterSpan = document.getElementById("counter");
+
+      let count = 1;
+
+      btn01.addEventListener("click", () => {
+        count--;
+        counterSpan.innerText = count;
+      });
+
+      btn02.addEventListener("click", () => {
+        count++;
+        counterSpan.innerText = count;
+      });
+    </script>
+  </body>
+</html>

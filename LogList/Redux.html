@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redux</title>
+  </head>
+  <body>
+    <button id="btn01">减少</button>
+    <span id="counter">1</span>
+    <button id="btn02">增加</button>
+    <button id="btn03">增加n</button>
+
+    <script src="https://unpkg.com/redux@4.2.0/dist/redux.js"></script>
+    <script>
+      /*
+             a. 先引包
+             b. 设置reducer整合函数//
+             c. 通过reducer对象创建store, b. 创建Redux容器对象，操作通过容器对象进行，
+             d.对store中的state进行订阅
+             e.通过dispatch派发state的执行操作
+             */
+      //b
+      function reducer(state, action) {
+        /*
+               state表示当前的state，可以根据这个state生成新的state
+               action是js'对象，里面是操作信息
+               */
+        switch (action.type) {
+          case "ADD":
+            return state + 1;
+          case "SUB":
+            return state - 1;
+          case "ADD_N":
+            return state + action.p;
+          default:
+            return state;
+        }
+      }
+      //c  Redux.createStore(reducer//整合函数, [preloadedState],//初始值  [enhancer])
+      const store = Redux.createStore(reducer, 1);
+
+      /*
+      “单一数据源”，也就是所有的state都会存储到一课对象树中
+      ，并且这个对象树会存储到一个store中。所以到了React中，组件只需获取到store即可获取到Redux中存储的所有state。
+      */
+
+      store.subscribe(() => {
+        //订阅函数在状态变化时自动执行
+        //d //getState()获取state的值
+        console.log(store.getState());
+        counterSpan.innerText = store.getState();
+      });
+
+      const btn01 = document.getElementById("btn01");
+      const btn02 = document.getElementById("btn02");
+      const counterSpan = document.getElementById("counter");
+      const btn03 = document.getElementById("btn03");
+
+      let count = 1;
+      let num = 5;
+      btn01.addEventListener("click", () => {
+        // store.dispatch  e
+        store.dispatch({ type: "SUB" });
+      });
+
+      btn02.addEventListener("click", () => {
+        store.dispatch({ type: "ADD" });
+      });
+      btn03.addEventListener("click", () => {
+        store.dispatch({ type: "ADD_N", p: num });
+      });
+    </script>
+  </body>
+</html>
