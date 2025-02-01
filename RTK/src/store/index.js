@@ -5,8 +5,7 @@ import { schReducer } from "./schoolReducer";
 const store = configureStore({
   reducer: {
     stu: stuReducer,
-    //此处的值属性名代表的是读取state
-    // 时state的属性名
+    //此处的值属性名代表的是读取state时state的属性名
     sch: schReducer,
   },
 });
