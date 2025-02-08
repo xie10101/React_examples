@@ -4,7 +4,7 @@ const About = (props) => {
     console.log(props)//没有传递参数
     return <div>
 
-     {/* <Navigate to="/student/1" replace  ></Navigate> */}
+     {/* <Navigate to="/student/1" replace></Navigate> */}
      {/* 区别：redirect组件默认为replace  Navigate组件为平替但默认为push方法*/}
 
      <h3>about</h3>

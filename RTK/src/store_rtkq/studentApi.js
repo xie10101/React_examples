@@ -15,6 +15,11 @@ const studentApi = createApi({
             //用来指定请求的子路径：
             return "students"; //子路径
           },
+          // 该函数用于对响应数据修改格式
+          transformResponse(baseQueryReturnValue) {
+            //baseQueryReturnValue该参数表示 返回数据
+            return baseQueryReturnValue.data;
+          },
         }
       ),
       // getStudentById: build.query({}),
