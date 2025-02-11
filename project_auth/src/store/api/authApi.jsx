@@ -5,8 +5,18 @@ export const authApi =createApi(
         reducerPath:"authApi",//api切片名
         baseQuery:fetchBaseQuery(
             {
-                baseUrl:"###"
+                baseUrl:"###",
                 // 一般使用在env文件中
+                prepareHeaders:(headers,{getState})=>{
+                    //获取得到的token
+                    const token = getState().auth.token;
+                    if(token)
+                    {
+                        headers.set("Authorization","Bearer "
+                            +token)
+                    }
+                    return headers
+                }
 
             }
         ),endpoints(build){
@@ -22,7 +32,11 @@ export const authApi =createApi(
                                 body:{
                                     // 注册表单数据
                                     user
-                                }
+                                },
+                                // headers:{
+                                //     Authorization:"Bearer "
+                                // }
+
                             }
                         }
                     }),

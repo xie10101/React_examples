@@ -3,6 +3,8 @@ import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLoginMutation, useRegisterMutation } from '../store/api/authApi';
 import { login } from '../store/reducer/authSlice';
+import { useNavigate,useLocation } from 'react-router-dom';
+
 const AuthForm = () => {
    
     // 具体
@@ -22,6 +24,15 @@ const AuthForm = () => {
          token:"",
          user:null
      }))
+  /*
+  进行回退操作
+  nav-跳转
+  from-跳转参数
+  */
+     
+  const nav=useNavigate();
+  const location=useLocation();
+  const from=location.state?.preLocation?.pathname;
  //  表单提交事件 
 const submitHandler=(e)=>{
     e.preventDefault(); //停止冒泡
@@ -52,6 +63,7 @@ const submitHandler=(e)=>{
                token:res.data.jwt,
                user:res.data.user
            }))
+          nav(from,{replace:true}) 
         }
      }).catch(err=>{
         // 登录失败
@@ -68,8 +80,7 @@ const submitHandler=(e)=>{
         // 请求错误-res为error对象
         if(!res.error)
         {
-            // 注册成功
-            console.log("注册成功");
+
             // 返回登录表单
             setIsLoginForm(true);
         }   
